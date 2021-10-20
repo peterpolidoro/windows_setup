@@ -1,0 +1,94 @@
+#+TITLE: windows_setup
+#+AUTHOR: Peter Polidoro
+#+EMAIL: peter@polidoro.io
+
+* Repository Information
+  - Author :: Peter Polidoro
+  - License :: BSD
+
+* Install Windows
+
+** Download Windows 10 ISO
+
+[[https://www.microsoft.com/en-us/software-download/windows10ISO]]
+
+** Prepare hard drive
+
+| Partition Name     | File System | Size  | Flags    |
+|--------------------+-------------+-------+----------|
+| EFI BOOT           | fat32       | 1GB   | boot,esp |
+| MICROSOFT RESERVED |             | 16MB  | msfres   |
+| WINDOWS            | ntfs        | 500GB | msfdata  |
+
+** Install Windows with local account
+
+1. Select your region.
+2. Select your keyboard layout.
+3. Select the Set up for personal use option.
+4. Click the Offline account option at the bottom left corner.
+5. Click the Limited experience option at the bottom left corner.
+6. Confirm the name of the local account.
+7. Create a password for the account.
+8. Select your privacy settings.
+
+* Install Firefox
+
+** Download and run Firefox installer
+
+[[https://www.mozilla.org/firefox/download/thanks/]]
+
+* Install Chrome
+
+** Download and run Chrome installer
+
+[[https://www.google.com/intl/en_us/chrome/]]
+
+* Install Emacs
+
+** Download Emacs
+
+[[https://ftp.gnu.org/gnu/emacs/windows/]]
+
+- emacs-$VERSION-x86_64-installer.exe
+
+* Install Git
+
+** Download git for windows
+
+[[https://gitforwindows.org/]]
+
+** Run installer
+
+1. Select all components
+2. Select Emacs as default editor (e.g. C:\Program Files\Emacs\x86_64\bin\emacs.exe)
+3. Let Git decide initial branch name
+4. Git from the command line and also from 3rd-party software
+5. Use bundled OpenSSH
+6. Use the OpenSSL library
+7. Checkout as-is, commit Unix-style line endings
+8. Use MinTTY
+9. Default behavior of git pull
+10. Git Credential Manager Core
+11. Enable file system caching and Enable symbolic links
+12. Do not enable experimental options
+
+* Setup Emacs
+
+** Set HOME environment variable
+
+1. In the Windows toolbar, search for Control Panel and open it
+2. Click on System and Security
+3. Click on System
+4. Click on Advanced system settings
+5. Click the Advanced tab
+6. Click the Environment Variables button
+7. Create new environment variable
+8. Set Variable name: HOME
+9. Set Variable value: c:/Users/USER
+
+** Clone dotfiles repository
+
+1. Open git bash
+2. cd ~
+3. git clone https://github.com/peterpolidoro/.dotfiles.git
+4. ln -s .dotfiles/.emacs.d
