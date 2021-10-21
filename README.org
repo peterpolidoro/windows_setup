@@ -31,64 +31,90 @@
 7. Create a password for the account.
 8. Select your privacy settings.
 
-* Install Firefox
+** Enable developer mode
 
-** Download and run Firefox installer
+1. Search for "updates"
+2. Click on "For developers"
+3. Turn on Developer Mode
+
+** Update Windows
+
+1. Search for "updates"
+2. Install all updates
+3. Restart Windows
+
+** Uninstall Unessential Programs
+
+1. Search for "add"
+2. Uninstall all unessential programs
+3. Restart Windows
+
+* Install Browser
+
+** Firefox
+
+Download and run Firefox installer
 
 [[https://www.mozilla.org/firefox/download/thanks/]]
 
-* Install Chrome
+** Chrome
 
-** Download and run Chrome installer
+Download and run Chrome installer
 
 [[https://www.google.com/intl/en_us/chrome/]]
 
-* Install Emacs
+* Install Msys2
 
-** Download Emacs
+** Download and run installer
 
-[[https://ftp.gnu.org/gnu/emacs/windows/]]
+[[https://www.msys2.org/]]
 
-- emacs-$VERSION-x86_64-installer.exe
+** Update and install tools
 
-* Install Git
+#+BEGIN_SRC sh
 
-** Download git for windows
+pacman -Syu
+pacman -Su
+pacman -S --needed base-devel mingw-w64-x86_64-toolchain
 
-[[https://gitforwindows.org/]]
+#+END_SRC
 
-** Run installer
+** Set environment variables
 
-1. Select all components
-2. Select Emacs as default editor (e.g. C:\Program Files\Emacs\x86_64\bin\emacs.exe)
-3. Let Git decide initial branch name
-4. Git from the command line and also from 3rd-party software
-5. Use bundled OpenSSH
-6. Use the OpenSSL library
-7. Checkout as-is, commit Unix-style line endings
-8. Use MinTTY
-9. Default behavior of git pull
-10. Git Credential Manager Core
-11. Enable file system caching and Enable symbolic links
-12. Do not enable experimental options
+1. Search for "environment"
+2. Add new environment variable
+3. Set Variable name: HOME
+4. Set Variable value: c:/Users/USER
+5. Add new environment variable
+6. Set Variable name: MSYS
+7. Set Variable value: winsymlinks:nativestrict
 
-* Setup Emacs
+* Install Packages
 
-** Set HOME environment variable
+** Git
 
-1. In the Windows toolbar, search for Control Panel and open it
-2. Click on System and Security
-3. Click on System
-4. Click on Advanced system settings
-5. Click the Advanced tab
-6. Click the Environment Variables button
-7. Create new environment variable
-8. Set Variable name: HOME
-9. Set Variable value: c:/Users/USER
+*** Install
 
-** Clone dotfiles repository
+#+BEGIN_SRC sh
 
-1. Open git bash
-2. cd ~
-3. git clone https://github.com/peterpolidoro/.dotfiles.git
-4. ln -s .dotfiles/.emacs.d
+pacman -S git
+
+#+END_SRC
+
+** Emacs
+
+*** Install
+
+#+BEGIN_SRC sh
+
+pacman -S mingw-w64-x86_64-emacs
+
+#+END_SRC
+
+*** Setup
+
+#+BEGIN_SRC sh
+
+git clone https://github.com/peterpolidoro/.dotfiles.git
+ln -s .dotfiles/.emacs.d
+#+END_SRC
